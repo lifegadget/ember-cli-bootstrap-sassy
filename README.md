@@ -1,6 +1,6 @@
-#ember-cli-bootstrap-**sassy**
+#ember-cli-bootstrap-sassy
 
-> a fork of [ember-cli-bootstrap-sass](https://github.com/unionups/ember-cli-bootstrap-sass) but without any references to the now defunct *bootstrap_for_ember*
+> fork of [ember-cli-bootstrap-sass](https://github.com/unionups/ember-cli-bootstrap-sass) without any references to now defunct *bootstrap_for_ember*
 
 #Installation
 

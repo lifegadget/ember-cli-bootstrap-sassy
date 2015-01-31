@@ -5,6 +5,7 @@ var EmberAddon = require('ember-cli/lib/broccoli/ember-addon');
 
 var app = new EmberAddon();
 var bootstrapPath   = 'bower_components/bootstrap-sass-official/assets/';
+var path = require('path');
 
 app.options.sassOptions = app.options.sassOptions || {};
 app.options.sassOptions.includePaths = app.options.sassOptions.includePaths || [];
@@ -13,14 +14,7 @@ app.options.sassOptions.includePaths.push(bootstrapPath + 'stylesheets');
 app.options.sassOptions.includePaths.push(bootstrapPath + 'stylesheets/bootstrap');
 app.options.sassOptions.includePaths.push(bootstrapPath + 'stylesheets/bootstrap/mixins');
 
-app.import('dist/assets/ember-cli-bootstrap-sassy.css');
-
 app.import(bootstrapPath + 'javascripts/bootstrap.js');
-// app.import(bootstrapPath + 'fonts/bootstrap/glyphicons-halflings-regular.eot', { destDir: '/fonts/bootstrap' });
-// app.import(bootstrapPath + 'fonts/bootstrap/glyphicons-halflings-regular.svg', { destDir: '/fonts/bootstrap' });
-// app.import(bootstrapPath + 'fonts/bootstrap/glyphicons-halflings-regular.ttf', { destDir: '/fonts/bootstrap' });
-// app.import(bootstrapPath + 'fonts/bootstrap/glyphicons-halflings-regular.woff', { destDir: '/fonts/bootstrap' });		
-
 
 // Use `app.import` to add additional libraries to the generated
 // output files.

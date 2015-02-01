@@ -3,7 +3,7 @@ module.exports = {
 	
 	included: function included(app) {
 		this.app = app;
-		var configMessage = [];
+		var configMessage = []; 
 
 		var emberCLIVersion = app.project.emberCLIVersion().split(',').map(function(item) {return Number(item);});
 		if (emberCLIVersion[1] === 0  || emberCLIVersion[2] < 8) {

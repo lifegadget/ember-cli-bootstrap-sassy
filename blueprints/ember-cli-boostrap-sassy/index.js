@@ -1,14 +1,13 @@
 module.exports = {
-  description: 'installing Bootstrap for SASS to project',
+	description: 'installing Bootstrap for SASS to project',
 
-  // locals: function(options) {
-  //   // Return custom template variables here.
-  //   return {
-  //     foo: options.entity.options.foo
-  //   };
-  // }
+	normalizeEntityName: function() {
+		// this prevents an error when the entityName is
+		// not specified (since that doesn't actually matter
+		// to us
+	},
 
-  afterInstall: function(options) {
-	  return this.addBowerPackageToProject('bootstrap-sass-official');
-  }
+	afterInstall: function(options) {
+		return this.addBowerPackageToProject('bootstrap-sass-official');
+	}
 };

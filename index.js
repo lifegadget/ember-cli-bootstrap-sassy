@@ -3,6 +3,7 @@ module.exports = {
 	
 	included: function included(app) {
 		this.app = app;
+		var configMessage = [];
 
 		var emberCLIVersion = app.project.emberCLIVersion().split(',').map(function(item) {return Number(item);});
 		if (emberCLIVersion[1] === 0  || emberCLIVersion[2] < 8) {
@@ -13,9 +14,10 @@ module.exports = {
 		var bootstrapPath   = 'bower_components/bootstrap-sass-official/assets/';
     
 		// add paths to SASS install
+		console.log('Bootstrap-Sassy adding Bootstrap\'s path to ember-cli-sass\'s options');
 		app.options.sassOptions = app.options.sassOptions || {};
 		app.options.sassOptions.includePaths = app.options.sassOptions.includePaths || [];
-  
+
 		app.options.sassOptions.includePaths.push(bootstrapPath + 'stylesheets');
 		app.options.sassOptions.includePaths.push(bootstrapPath + 'stylesheets/bootstrap');
 		app.options.sassOptions.includePaths.push(bootstrapPath + 'stylesheets/bootstrap/mixins');

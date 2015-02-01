@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-bootstrap-sassy",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Bootstrap for SASS without any other cruft.",
   "directories": {
     "doc": "doc",

@@ -53,7 +53,7 @@ All of Bootstrap's JS libraries are included by default but if you wish to remov
 
 var app = new EmberApp({
   'ember-cli-bootstrap-sassy': {
-    'importBootstrapJS': false
+    'js': false
   }
 });
 ```
@@ -65,10 +65,12 @@ Alternatively you can specify exactly which plugins should be imported into the 
 
 var app = new EmberApp({
   'ember-cli-bootstrap-sassy': {
-    'importBootstrapJS': ['affix','collapse']
+    'js': ['affix','collapse']
   }
 });
 ```
+
+> You can check dependencies in the [Bootstrap JS documentation](http://getbootstrap.com/javascript/#transitions).
 
 ## Glyphicons ##
 Included by default, if you wish to have them removed:
@@ -82,8 +84,5 @@ var app = new EmberApp({
   }
 });
 ```
-
-
-You can check dependencies in the [Bootstrap JS documentation](http://getbootstrap.com/javascript/#transitions).
 
 

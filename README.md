@@ -58,7 +58,7 @@ var app = new EmberApp({
 });
 ```
 
-Alternatively you can specify exactly which plugins should be imported into the project via the `importBootstrapJS` option, like so:
+Alternatively you can specify exactly which plugins should be imported into the project via the `js` option, like so:
 
 ```javascript
 // in your path/to/app/Brocfile.js

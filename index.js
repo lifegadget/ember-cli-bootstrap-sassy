@@ -27,12 +27,12 @@ module.exports = {
 		app.options.sassOptions.includePaths.push(path_join(bootstrapPath, 'stylesheets/bootstrap/mixins'));
 
 		// Import JS from bootstrap
-		if(o.js instanceof Array) {
-			o.js.forEach(function(fileName) {
-				app.import(bootstrapPath + 'javascripts/bootstrap', fileName + '.js');
+		if(o.importBootstrapJS instanceof Array) {
+			o.importBootstrapJS.forEach(function(fileName) {
+				app.import(path_join(bootstrapPath + 'javascripts/bootstrap', fileName + '.js'));
 			});
-			configMessage.push('some JS loaded [%@]'.fmt(o.js.join(',')));
-		} else if (o.js !== false) {
+			configMessage.push('some JS loaded ['+o.importBootstrapJS.join(',')+']');
+		} else if (o.importBootstrapJS !== false) {
 			app.import(bootstrapPath + 'javascripts/bootstrap.js');
 			configMessage.push('all JS enabled');
 		} else {

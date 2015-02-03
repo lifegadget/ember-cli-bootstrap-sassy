@@ -31,7 +31,7 @@ module.exports = {
 			o.js.forEach(function(fileName) {
 				app.import(bootstrapPath + 'javascripts/bootstrap' + fileName + '.js');
 			});
-			configMessage.push('some JS loaded [+'o.js.join(',')'+]');
+			configMessage.push('some JS loaded ['+o.js.join(',')+']');
 		} else if (o.js !== false) {
 			app.import(bootstrapPath + 'javascripts/bootstrap.js');
 			configMessage.push('all JS enabled');

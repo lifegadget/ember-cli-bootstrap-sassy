@@ -83,6 +83,7 @@ var app = new EmberApp({
     'glyphicons': false
   }
 });
+````
 
 ## Logs ##
 Also by default, this addon will communicate the configuration setup when either `ember serve` or `ember build` which could be handy to remind you of 
@@ -96,7 +97,6 @@ var app = new EmberApp({
     'quiet': true
   }
 });
-
 
 ```
 

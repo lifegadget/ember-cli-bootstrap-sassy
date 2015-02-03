@@ -83,6 +83,21 @@ var app = new EmberApp({
     'glyphicons': false
   }
 });
+
+## Logs ##
+Also by default, this addon will communicate the configuration setup when either `ember serve` or `ember build` which could be handy to remind you of 
+the configuration but if this is unwanted verbosity you can turn it off with:
+
+```javascript
+// in your path/to/app/Brocfile.js
+
+var app = new EmberApp({
+  'ember-cli-bootstrap-sassy': {
+    'quiet': true
+  }
+});
+
+
 ```
 
 

@@ -50,8 +50,9 @@ module.exports = {
 			configMessage.push('glphicons disabled');
 		}
 		
-		console.log('bootstrap-sassy config: ', configMessage.join(', '));
-		
+		if(o.quiet !== false) {
+			console.log('bootstrap-sassy config: ', configMessage.join(', '));			
+		}
 	}
 	
 };

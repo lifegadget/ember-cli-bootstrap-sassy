@@ -29,7 +29,7 @@ module.exports = {
 		// Import JS from bootstrap
 		if(o.js instanceof Array) {
 			o.js.forEach(function(fileName) {
-				app.import(bootstrapPath + 'javascripts/bootstrap' + fileName + '.js');
+				app.import(bootstrapPath + 'javascripts/bootstrap/' + fileName + '.js');
 			});
 			configMessage.push('some JS loaded ['+o.js.join(',')+']');
 		} else if (o.js !== false) {

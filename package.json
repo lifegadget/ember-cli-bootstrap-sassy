@@ -36,8 +36,11 @@
   },
   "keywords": [
     "ember-addon",
-	"sass",
-	"bootstrap"
+    "bootstrap",
+    "bootstrap-sass",
+    "ember-cli-sass",
+    "ember-cli-bootstrap-sass",
+    "sass"
   ],
   "dependencies": {
     "ember-cli-babel": "^4.0.0"

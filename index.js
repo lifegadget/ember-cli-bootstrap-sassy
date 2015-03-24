@@ -18,14 +18,6 @@ module.exports = {
 		if (emberCLIVersion[1] === 0  || emberCLIVersion[2] < 8) {
 			throw new Error('ember-cli-bootstrap-sassy requires ember-cli version 0.1.8 or greater.\n');
 		}
-    
-		// add paths to SASS install
-		app.options.sassOptions = app.options.sassOptions || {};
-		app.options.sassOptions.includePaths = app.options.sassOptions.includePaths || [];
-
-		app.options.sassOptions.includePaths.push(path_join(bootstrapPath, 'stylesheets'));
-		app.options.sassOptions.includePaths.push(path_join(bootstrapPath, 'stylesheets/bootstrap'));
-		app.options.sassOptions.includePaths.push(path_join(bootstrapPath, 'stylesheets/bootstrap/mixins'));
 
 		// Import JS from bootstrap
 		if(o.js instanceof Array) {
@@ -55,6 +47,14 @@ module.exports = {
 		if(o.quiet !== false) {
 			console.log('bootstrap-sassy config: ', configMessage.join(', '));			
 		}
-	}
-	
+	},
+  treeForStyles: function(){
+    var bootstrapPath = path.join(this.app.bowerDirectory, 'bootstrap-sass', 'assets/stylesheets');
+    var bootstrapTree = this.pickFiles(this.treeGenerator(bootstrapPath), {
+      srcDir: '/',
+      destDir: '/app/styles'
+    });
+    return bootstrapTree;
+  }
+
 };

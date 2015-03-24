@@ -1,10 +1,11 @@
+var path = require('path');
+
 module.exports = {
 	name: 'ember-cli-bootstrap-sassy',
 	
 	included: function included(app) {
 		this.app = app;
 		var configMessage = []; 
-		var path 			= require('path');
 		var o         		= app.options['ember-cli-bootstrap-sassy'] || { js: true, glyphicons: true };
 		var bootstrapPath   = 'bower_components/bootstrap-sass-official/assets/';
 		var modulePath      = path.relative(app.project.root, __dirname);

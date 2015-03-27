@@ -7,7 +7,7 @@ module.exports = {
 		this.app = app;
 		var configMessage = [];
 		var o = app.options['ember-cli-bootstrap-sassy'] || { js: true, glyphicons: true };
-		var bootstrapPath   = 'bower_components/bootstrap-sass/assets/';
+		var bootstrapPath   = app.bowerDirectory + '/bootstrap-sass-official/assets/';
 		var modulePath      = path.relative(app.project.root, __dirname);
 		var path_join = function(){
 		  // fix path with windows back slash with path_join
@@ -49,7 +49,7 @@ module.exports = {
 		}
 	},
   treeForStyles: function(){
-    var bootstrapPath = path.join(this.app.bowerDirectory, 'bootstrap-sass', 'assets/stylesheets');
+    var bootstrapPath = path.join(this.app.bowerDirectory, 'bootstrap-sass-official', 'assets/stylesheets');
     var bootstrapTree = this.pickFiles(this.treeGenerator(bootstrapPath), {
       srcDir: '/',
       destDir: '/app/styles'

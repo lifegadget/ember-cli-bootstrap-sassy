@@ -8,6 +8,6 @@ module.exports = {
 	},
 
 	afterInstall: function(options) {
-		return this.addBowerPackageToProject('bootstrap-sass-official');
+		return this.addBowerPackageToProject('bootstrap-sass');
 	}
 };

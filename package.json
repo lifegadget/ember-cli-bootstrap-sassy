@@ -18,6 +18,7 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "broccoli-funnel": "^0.2.2",
     "broccoli-asset-rev": "^2.0.0",
     "ember-cli": "0.2.1",
     "ember-cli-app-version": "0.3.3",

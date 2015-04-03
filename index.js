@@ -40,9 +40,9 @@ module.exports = {
       app.import(bootstrapPath + 'fonts/bootstrap/glyphicons-halflings-regular.ttf', { destDir: '/fonts/bootstrap' });
       app.import(bootstrapPath + 'fonts/bootstrap/glyphicons-halflings-regular.woff', { destDir: '/fonts/bootstrap' });
       app.import(bootstrapPath + 'fonts/bootstrap/glyphicons-halflings-regular.woff2', { destDir: '/fonts/bootstrap' });
-      configMessage.push('glphicons enabled');
+      configMessage.push('glyphicons enabled');
     } else {
-      configMessage.push('glphicons disabled');
+      configMessage.push('glyphicons disabled');
     }
     
     if(o.quiet !== false) {

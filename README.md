@@ -7,8 +7,15 @@
 People wanting to use Twitter Bootstrap's SASS implementation at the moment need to be aware that there is a SASS problem in their code and the latest libsass compilers are choking on it. You can find out more [here](https://github.com/twbs/bootstrap-sass/issues/879). The temporary solution is to use version 3.1.0 of `ember-cli-sass` rather than more recent ones. If you install this addon first using the command below then this will be done for you.
 
 #Installation
-
 In the root of your ember-cli project directory, run:
+
+For ember-cli 0.2.3 and above:
+
+```bash
+ember install ember-cli-bootstrap-sassy
+```
+
+For prior versions of ember-cli:
 ```bash
 ember install:addon ember-cli-bootstrap-sassy
 ```

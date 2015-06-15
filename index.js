@@ -1,9 +1,10 @@
+/* jshint node: true */
 var path = require('path');
-var funnel = require('broccoli-funnel');
+var Funnel = require('broccoli-funnel');
 
 module.exports = {
   name: 'ember-cli-bootstrap-sassy',
-  
+
   included: function included(app) {
     this.app = app;
     var configMessage = [];
@@ -14,7 +15,7 @@ module.exports = {
       // fix path with windows back slash with path_join
       return path.join.apply(this, arguments).replace(/\\/g, '/');
     };
-    
+
     var emberCLIVersion = app.project.emberCLIVersion().split(',').map(function(item) {return Number(item);});
     if (emberCLIVersion[1] === 0  || emberCLIVersion[2] < 8) {
       throw new Error('ember-cli-bootstrap-sassy requires ember-cli version 0.1.8 or greater.\n');
@@ -32,7 +33,7 @@ module.exports = {
     } else {
       configMessage.push('no JS enabled');
     }
-    
+
     // Import glyphicons from bootstrap
     if(o.glyphicons !== false) {
       app.import(bootstrapPath + 'fonts/bootstrap/glyphicons-halflings-regular.eot', { destDir: '/fonts/bootstrap' });
@@ -44,14 +45,14 @@ module.exports = {
     } else {
       configMessage.push('glyphicons disabled');
     }
-    
+
     if(o.quiet !== true) {
-      console.log('bootstrap-sassy config: ', configMessage.join(', '));      
+      console.log('bootstrap-sassy config: ', configMessage.join(', '));
     }
   },
   treeForStyles: function(){
     var bootstrapPath = path.join(this.app.bowerDirectory, 'bootstrap-sass', 'assets/stylesheets');
-    var bootstrapTree = new funnel(bootstrapPath, {
+    var bootstrapTree = new Funnel(this.treeGenerator(bootstrapPath), {
       srcDir: '/',
       destDir: '/app/styles'
     });

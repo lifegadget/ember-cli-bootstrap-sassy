@@ -19,7 +19,7 @@ ember install:addon ember-cli-bootstrap-sassy
 You should now have access to Bootstrap, SCSS pre-processor style. Now go out and have a good time. 
 
 > **Note:** 
-> this assumes that you already have SCSS installed as you can't very well use Bootstrap for SASS without SASS can you? At some point it may make sense just to build that in but right now I'm just trying to fix up the 
+> this assumes that you already have [SCSS installed](https://github.com/aexmachina/ember-cli-sass) as you can't very well use Bootstrap for SASS without SASS can you? At some point it may make sense just to build that in but right now I'm just trying to fix up the 
 > old addon so it works for modern Ember builds
 
 #Usage

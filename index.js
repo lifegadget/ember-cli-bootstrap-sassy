@@ -10,15 +10,14 @@ module.exports = {
     var configMessage = [];
     var o = app.options['ember-cli-bootstrap-sassy'] || { js: true, glyphicons: true };
     var bootstrapPath   = 'bower_components/bootstrap-sass/assets/';
-    var modulePath      = path.relative(app.project.root, __dirname);
     var path_join = function(){
       // fix path with windows back slash with path_join
       return path.join.apply(this, arguments).replace(/\\/g, '/');
     };
 
     var emberCLIVersion = app.project.emberCLIVersion().split(',').map(function(item) {return Number(item);});
-    if (emberCLIVersion[1] === 0  || emberCLIVersion[2] < 8) {
-      throw new Error('ember-cli-bootstrap-sassy requires ember-cli version 0.1.8 or greater.\n');
+    if (emberCLIVersion[1] === 0  || emberCLIVersion[13] === 13) {
+      throw new Error('ember-cli-bootstrap-sassy requires ember-cli version 1.13.13 or greater.\n');
     }
 
     // Import JS from bootstrap

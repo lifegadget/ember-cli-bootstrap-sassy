@@ -56,7 +56,7 @@ You can also import components explicitly. To start with a full list of modules 
 All of Bootstrap's JS libraries are included by default but if you wish to remove them you can do so with the following configuration:
 
 ```javascript
-// in your path/to/app/Brocfile.js
+// in your path/to/app/ember-cli-build.js
 
 var app = new EmberApp({
   'ember-cli-bootstrap-sassy': {
@@ -68,7 +68,7 @@ var app = new EmberApp({
 Alternatively you can specify exactly which plugins should be imported into the project via the `js` option, like so:
 
 ```javascript
-// in your path/to/app/Brocfile.js
+// in your path/to/app/ember-cli-build.js
 
 var app = new EmberApp({
   'ember-cli-bootstrap-sassy': {
@@ -83,7 +83,7 @@ var app = new EmberApp({
 Included by default, if you wish to have them removed:
 
 ```javascript
-// in your path/to/app/Brocfile.js
+// in your path/to/app/ember-cli-build.js
 
 var app = new EmberApp({
   'ember-cli-bootstrap-sassy': {
@@ -97,7 +97,7 @@ Also by default, this addon will communicate the configuration setup when either
 the configuration but if this is unwanted verbosity you can turn it off with:
 
 ```javascript
-// in your path/to/app/Brocfile.js
+// in your path/to/app/ember-cli-build.js
 
 var app = new EmberApp({
   'ember-cli-bootstrap-sassy': {

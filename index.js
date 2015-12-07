@@ -55,6 +55,7 @@ module.exports = {
       srcDir: '/',
       destDir: '/app/styles'
     });
+
     return bootstrapTree;
   }
 

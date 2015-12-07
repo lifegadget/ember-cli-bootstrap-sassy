@@ -16,6 +16,19 @@
     "node": ">= 0.10.0"
   },
   "author": "Ken Snyder",
+  "files": [
+    "ember-cli-build.js",
+    "LICENSE.md",
+    "README.md",
+    "addon",
+    "blueprints",
+    "app",
+    "bower.json",
+    "index.js",
+    "package.json",
+    "testem.json",
+    "vendor"
+  ],
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^2.2.0",

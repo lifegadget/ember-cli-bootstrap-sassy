@@ -10,10 +10,6 @@ module.exports = {
     var configMessage = [];
     var o = app.options['ember-cli-bootstrap-sassy'] || { js: true, glyphicons: true };
     var bootstrapPath   = 'bower_components/bootstrap-sass/assets/';
-    var path_join = function(){
-      // fix path with windows back slash with path_join
-      return path.join.apply(this, arguments).replace(/\\/g, '/');
-    };
 
     var emberCLIVersion = app.project.emberCLIVersion().split(',').map(function(item) {return Number(item);});
     if (emberCLIVersion[1] === 0  || emberCLIVersion[13] === 13) {
@@ -45,8 +41,8 @@ module.exports = {
       configMessage.push('glyphicons disabled');
     }
 
-    if(o.quiet !== true) {
-      console.log('bootstrap-sassy config: ', configMessage.join(', '));
+    if(o.logConfig === true) {
+      this.ui.writeLine('bootstrap-sassy config: ' + configMessage.join(', '));
     }
   },
   treeForStyles: function(){

@@ -16,11 +16,7 @@ For prior versions of ember-cli:
 ember install:addon ember-cli-bootstrap-sassy
 ```
 
-You should now have access to Bootstrap, SCSS pre-processor style. Now go out and have a good time. 
-
-> **Note:** 
-> this assumes that you already have [SCSS installed](https://github.com/aexmachina/ember-cli-sass) as you can't very well use Bootstrap for SASS without SASS can you? At some point it may make sense just to build that in but right now I'm just trying to fix up the 
-> old addon so it works for modern Ember builds
+You should now have access to Bootstrap, SCSS pre-processor style. Now go out and have a good time.
 
 #Usage
 
@@ -92,19 +88,17 @@ var app = new EmberApp({
 });
 ````
 
-## Logs ##
-Also by default, this addon will communicate the configuration setup when either `ember serve` or `ember build` which could be handy to remind you of 
-the configuration but if this is unwanted verbosity you can turn it off with:
+## Debug ##
+If you want this addon to communicate the configuration setup when running `ember serve` or `ember build`,
+add this to your configuration:
 
 ```javascript
 // in your path/to/app/ember-cli-build.js
 
 var app = new EmberApp({
   'ember-cli-bootstrap-sassy': {
-    'quiet': true
+    'logConfig': true
   }
 });
 
 ```
-
-

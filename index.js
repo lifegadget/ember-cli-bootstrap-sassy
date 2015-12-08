@@ -46,7 +46,7 @@ module.exports = {
     }
 
     if(o.quiet !== true) {
-      console.log('bootstrap-sassy config: ', configMessage.join(', '));
+      this.ui.writeLine('bootstrap-sassy config: ' + configMessage.join(', '));
     }
   },
   treeForStyles: function(){

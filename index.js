@@ -5,17 +5,13 @@ var Funnel = require('broccoli-funnel');
 module.exports = {
   name: 'ember-cli-bootstrap-sassy',
 
-  included: function included(app) {
-    this.app = app;
+  included: function included(app, parentAddon) {
+    var target = parentAddon || app;
     var configMessage = [];
-    var o = app.options['ember-cli-bootstrap-sassy'] || { js: true, glyphicons: true };
-    var bootstrapPath   = 'bower_components/bootstrap-sass/assets/';
-    var path_join = function(){
-      // fix path with windows back slash with path_join
-      return path.join.apply(this, arguments).replace(/\\/g, '/');
-    };
+    var o = target.options['ember-cli-bootstrap-sassy'] || { js: true, glyphicons: true };
+    this.bootstrapPath = target.bowerDirectory + '/bootstrap-sass/assets/';
 
-    var emberCLIVersion = app.project.emberCLIVersion().split(',').map(function(item) {return Number(item);});
+    var emberCLIVersion = target.project.emberCLIVersion().split(',').map(function(item) {return Number(item);});
     if (emberCLIVersion[1] === 0  || emberCLIVersion[13] === 13) {
       throw new Error('ember-cli-bootstrap-sassy requires ember-cli version 1.13.13 or greater.\n');
     }
@@ -23,11 +19,11 @@ module.exports = {
     // Import JS from bootstrap
     if(o.js instanceof Array) {
       o.js.forEach(function(fileName) {
-        app.import(bootstrapPath + 'javascripts/bootstrap/' + fileName + '.js');
+        target.import(this.bootstrapPath + 'javascripts/bootstrap/' + fileName + '.js');
       });
       configMessage.push('some JS loaded [' + o.js.join(',') + ']');
     } else if (o.js !== false) {
-      app.import(bootstrapPath + 'javascripts/bootstrap.js');
+      target.import(this.bootstrapPath + 'javascripts/bootstrap.js');
       configMessage.push('all JS enabled');
     } else {
       configMessage.push('no JS enabled');
@@ -35,11 +31,11 @@ module.exports = {
 
     // Import glyphicons from bootstrap
     if(o.glyphicons !== false) {
-      app.import(bootstrapPath + 'fonts/bootstrap/glyphicons-halflings-regular.eot', { destDir: '/fonts/bootstrap' });
-      app.import(bootstrapPath + 'fonts/bootstrap/glyphicons-halflings-regular.svg', { destDir: '/fonts/bootstrap' });
-      app.import(bootstrapPath + 'fonts/bootstrap/glyphicons-halflings-regular.ttf', { destDir: '/fonts/bootstrap' });
-      app.import(bootstrapPath + 'fonts/bootstrap/glyphicons-halflings-regular.woff', { destDir: '/fonts/bootstrap' });
-      app.import(bootstrapPath + 'fonts/bootstrap/glyphicons-halflings-regular.woff2', { destDir: '/fonts/bootstrap' });
+      target.import(this.bootstrapPath + 'fonts/bootstrap/glyphicons-halflings-regular.eot', { destDir: '/fonts/bootstrap' });
+      target.import(this.bootstrapPath + 'fonts/bootstrap/glyphicons-halflings-regular.svg', { destDir: '/fonts/bootstrap' });
+      target.import(this.bootstrapPath + 'fonts/bootstrap/glyphicons-halflings-regular.ttf', { destDir: '/fonts/bootstrap' });
+      target.import(this.bootstrapPath + 'fonts/bootstrap/glyphicons-halflings-regular.woff', { destDir: '/fonts/bootstrap' });
+      target.import(this.bootstrapPath + 'fonts/bootstrap/glyphicons-halflings-regular.woff2', { destDir: '/fonts/bootstrap' });
       configMessage.push('glyphicons enabled');
     } else {
       configMessage.push('glyphicons disabled');
@@ -50,8 +46,7 @@ module.exports = {
     }
   },
   treeForStyles: function(){
-    var bootstrapPath = path.join(this.app.bowerDirectory, 'bootstrap-sass', 'assets/stylesheets');
-    var bootstrapTree = new Funnel(this.treeGenerator(bootstrapPath), {
+    var bootstrapTree = new Funnel(this.treeGenerator(path.join(this.bootstrapPath, 'stylesheets')), {
       srcDir: '/',
       destDir: '/app/styles'
     });

@@ -8,6 +8,7 @@ module.exports = {
   included: function included(app, parentAddon) {
     var target = parentAddon || app;
     var configMessage = [];
+    var _this = this;
     var o = target.options['ember-cli-bootstrap-sassy'] || { js: true, glyphicons: true };
     this.bootstrapPath = target.bowerDirectory + '/bootstrap-sass/assets/';
 
@@ -19,7 +20,7 @@ module.exports = {
     // Import JS from bootstrap
     if(o.js instanceof Array) {
       o.js.forEach(function(fileName) {
-        target.import(this.bootstrapPath + 'javascripts/bootstrap/' + fileName + '.js');
+        target.import(_this.bootstrapPath + 'javascripts/bootstrap/' + fileName + '.js');
       });
       configMessage.push('some JS loaded [' + o.js.join(',') + ']');
     } else if (o.js !== false) {

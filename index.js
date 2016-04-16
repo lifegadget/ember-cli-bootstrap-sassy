@@ -18,16 +18,20 @@ module.exports = {
     }
 
     // Import JS from bootstrap
-    if(o.js instanceof Array) {
-      o.js.forEach(function(fileName) {
-        target.import(_this.bootstrapPath + 'javascripts/bootstrap/' + fileName + '.js');
-      });
-      configMessage.push('some JS loaded [' + o.js.join(',') + ']');
-    } else if (o.js !== false) {
-      target.import(this.bootstrapPath + 'javascripts/bootstrap.js');
-      configMessage.push('all JS enabled');
+    if (process.env.EMBER_CLI_FASTBOOT) {
+      configMessage.push('no JS enabled [FastBoot]');
     } else {
-      configMessage.push('no JS enabled');
+      if(o.js instanceof Array) {
+        o.js.forEach(function(fileName) {
+          target.import(_this.bootstrapPath + 'javascripts/bootstrap/' + fileName + '.js');
+        });
+        configMessage.push('some JS loaded [' + o.js.join(',') + ']');
+      } else if (o.js !== false) {
+        target.import(this.bootstrapPath + 'javascripts/bootstrap.js');
+        configMessage.push('all JS enabled');
+      } else {
+        configMessage.push('no JS enabled');
+      }
     }
 
     // Import glyphicons from bootstrap

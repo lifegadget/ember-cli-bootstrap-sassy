@@ -59,7 +59,9 @@
     "sass"
   ],
   "dependencies": {
-    "broccoli-funnel": "^1.0.1"
+    "bootstrap-sass": "^3.0.0",
+    "broccoli-funnel": "^1.0.1",
+    "resolve": "^1.1.7"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"

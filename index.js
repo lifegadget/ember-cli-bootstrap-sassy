@@ -1,13 +1,12 @@
 /* jshint node: true */
 var path = require('path');
-var resolve = require('resolve');
-var Funnel = require('broccoli-funnel');
 
 module.exports = {
   name: 'ember-cli-bootstrap-sassy',
 
   _findBootstrapPath: function() {
     if (!this._bootstrapPath) {
+      var resolve = require('resolve');
       this._bootstrapPath = path.dirname(resolve.sync('bootstrap-sass/package.json')) + '/assets';
     }
   },
@@ -56,6 +55,8 @@ module.exports = {
     }
   },
   treeForStyles: function(){
+    var Funnel = require('broccoli-funnel');
+
     this._findBootstrapPath();
 
     var bootstrapTree = new Funnel(this.treeGenerator(path.join(this._bootstrapPath, 'stylesheets')), {
@@ -66,6 +67,8 @@ module.exports = {
   },
 
   treeForVendor: function() {
+    var Funnel = require('broccoli-funnel');
+
     this._findBootstrapPath();
 
     return new Funnel(this._bootstrapPath, {

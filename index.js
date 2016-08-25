@@ -6,10 +6,10 @@ var Funnel = require('broccoli-funnel');
 module.exports = {
   name: 'ember-cli-bootstrap-sassy',
 
-  init: function() {
-    this._super.init && this._super.init.apply(this, arguments);
-
-    this._bootstrapPath = path.dirname(resolve.sync('bootstrap-sass/package.json')) + '/assets';
+  _findBootstrapPath: function() {
+    if (!this._bootstrapPath) {
+      this._bootstrapPath = path.dirname(resolve.sync('bootstrap-sass/package.json')) + '/assets';
+    }
   },
 
   included: function included(app, parentAddon) {
@@ -56,6 +56,8 @@ module.exports = {
     }
   },
   treeForStyles: function(){
+    this._findBootstrapPath();
+
     var bootstrapTree = new Funnel(this.treeGenerator(path.join(this._bootstrapPath, 'stylesheets')), {
       destDir: '/app/styles'
     });
@@ -64,6 +66,8 @@ module.exports = {
   },
 
   treeForVendor: function() {
+    this._findBootstrapPath();
+
     return new Funnel(this._bootstrapPath, {
       destDir: '/bootstrap',
     });

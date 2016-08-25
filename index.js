@@ -54,16 +54,15 @@ module.exports = {
       this.ui.writeLine('bootstrap-sassy config: ' + configMessage.join(', '));
     }
   },
-  treeForStyles: function(){
+
+  treeForStyles: function() {
     var Funnel = require('broccoli-funnel');
 
     this._findBootstrapPath();
 
-    var bootstrapTree = new Funnel(this.treeGenerator(path.join(this._bootstrapPath, 'stylesheets')), {
+    return new Funnel(this.treeGenerator(path.join(this._bootstrapPath, 'stylesheets')), {
       destDir: '/app/styles'
     });
-
-    return bootstrapTree;
   },
 
   treeForVendor: function() {

@@ -46,8 +46,10 @@ module.exports = {
       target.import('vendor/bootstrap/fonts/bootstrap/glyphicons-halflings-regular.ttf', { destDir: '/fonts/bootstrap' });
       target.import('vendor/bootstrap/fonts/bootstrap/glyphicons-halflings-regular.woff', { destDir: '/fonts/bootstrap' });
       target.import('vendor/bootstrap/fonts/bootstrap/glyphicons-halflings-regular.woff2', { destDir: '/fonts/bootstrap' });
+      this._toggleGlyphiconsStyles(true);
       configMessage.push('glyphicons enabled');
     } else {
+      this._toggleGlyphiconsStyles(false);
       configMessage.push('glyphicons disabled');
     }
 
@@ -75,4 +77,27 @@ module.exports = {
       destDir: '/bootstrap',
     });
   },
+
+  _toggleGlyphiconsStyles(enable) {
+    const fs = require('fs');
+
+    this._findBootstrapPath();
+    let bsStyles = path.join(this._bootstrapPath, 'stylesheets', '_bootstrap.scss');
+
+    fs.readFile(bsStyles, 'utf8', (err,data) => {
+      if (err) { return console.log(err); }
+
+      let result;
+
+      if(enable) {
+        result = data.replace('//@import "bootstrap/glyphicons";', '@import "bootstrap/glyphicons";');
+      } else {
+        result = data.replace('@import "bootstrap/glyphicons";', '//@import "bootstrap/glyphicons";');
+      }
+
+      fs.writeFile(bsStyles, result, 'utf8', (err) => {
+         if (err) return console.log(err);
+      });
+    });
+  }
 };

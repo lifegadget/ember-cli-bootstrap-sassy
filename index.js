@@ -23,20 +23,16 @@ module.exports = {
     }
 
     // Import JS from bootstrap
-    if (process.env.EMBER_CLI_FASTBOOT) {
-      configMessage.push('no JS enabled [FastBoot]');
+    if(o.js instanceof Array) {
+      o.js.forEach(function(fileName) {
+        target.import('vendor/bootstrap/javascripts/bootstrap/' + fileName + '.js');
+      });
+      configMessage.push('some JS loaded [' + o.js.join(',') + ']');
+    } else if (o.js !== false) {
+      target.import('vendor/bootstrap/javascripts/bootstrap.js');
+      configMessage.push('all JS enabled');
     } else {
-      if(o.js instanceof Array) {
-        o.js.forEach(function(fileName) {
-          target.import('vendor/bootstrap/javascripts/bootstrap/' + fileName + '.js');
-        });
-        configMessage.push('some JS loaded [' + o.js.join(',') + ']');
-      } else if (o.js !== false) {
-        target.import('vendor/bootstrap/javascripts/bootstrap.js');
-        configMessage.push('all JS enabled');
-      } else {
-        configMessage.push('no JS enabled');
-      }
+      configMessage.push('no JS enabled');
     }
 
     // Import glyphicons from bootstrap
@@ -68,13 +64,30 @@ module.exports = {
     });
   },
 
-  treeForVendor: function() {
+  treeForVendor: function(vendorTree) {
     var Funnel = require('broccoli-funnel');
+    var map = require('broccoli-stew').map;
+    var mergeTrees = require('broccoli-merge-trees');
 
     this._findBootstrapPath();
 
-    return new Funnel(this._bootstrapPath, {
-      destDir: '/bootstrap',
+    let trees = [];
+
+    if (vendorTree) {
+      trees.push(vendorTree);
+    }
+
+    trees.push(
+      new Funnel(this._bootstrapPath, {
+        destDir: '/bootstrap'
+      })
+    );
+
+    return map(mergeTrees(trees), (content, relativePath) => {
+      if (relativePath.match(/\.js$/i)) {
+        return `if (typeof FastBoot === 'undefined') { ${content} }`;
+      }
+      return content;
     });
   },
 

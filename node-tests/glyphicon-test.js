@@ -9,7 +9,7 @@ const importedGlyphiconFilePath = path.resolve(__dirname, '../dist/fonts/bootstr
 const originalGlyphiconBuffer = fs.readFileSync(originalGlyphiconFilePath);
 const importedGlyphiconBuffer = fs.readFileSync(importedGlyphiconFilePath);
 
-const isTheSame = originalGlyphiconBuffer === importedGlyphiconBuffer;
+const isTheSame = originalGlyphiconBuffer.equals(importedGlyphiconBuffer);
 if (isTheSame) {
   console.info('Glyphicon files are the same.') // eslint-disable-line no-console
 } else {

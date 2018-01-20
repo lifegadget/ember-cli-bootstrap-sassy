@@ -75,7 +75,7 @@ module.exports = {
     });
   },
 
-  treeForVendor: function(vendorTree) {
+  treeForVendor(vendorTree) {
 
     let trees = [];
 
@@ -89,7 +89,7 @@ module.exports = {
       })
     );
 
-    return map(mergeTrees(trees), (content, relativePath) => {
+    return map(mergeTrees(trees), '**/*.js', (content, relativePath) => {
       if (relativePath.match(/\.js$/i)) {
         return `if (typeof FastBoot === 'undefined') { ${content} }`;
       }

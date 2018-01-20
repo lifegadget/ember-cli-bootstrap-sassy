@@ -14,8 +14,7 @@ module.exports = {
   env: {
     browser: true
   },
-  rules: {
-  },
+  rules: {},
   overrides: [
     // node files
     {
@@ -24,7 +23,8 @@ module.exports = {
         'testem.js',
         'ember-cli-build.js',
         'config/**/*.js',
-        'tests/dummy/config/**/*.js'
+        'tests/dummy/config/**/*.js',
+        'node-tests/glyphicon-test.js'
       ],
       excludedFiles: [
         'app/**',
